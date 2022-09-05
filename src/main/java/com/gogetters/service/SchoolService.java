@@ -37,9 +37,8 @@ public class SchoolService implements CRUDService<School>{
     public void update(School o) {
 
         Database.schoolList.stream()
-                .filter(course->course.getName().equals("English"))
-                .findFirst()
-                .ifPresent(course->course.setName("German"));
+                .filter(school -> school.getId()==o.getId())
+                .forEach(school -> Database.schoolList.set(Database.schoolList.indexOf(school),o));
 
     }
 
