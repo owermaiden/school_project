@@ -15,6 +15,7 @@ import java.util.Scanner;
 
 public class SchoolMainRunner {
 
+
 //    public static CRUDService<School> schoolService;
     public static CRUDService<Course> courseService;
 //    public static CRUDService<Parent> parentService;
@@ -31,6 +32,8 @@ public class SchoolMainRunner {
         Course course = new Course(40,"HTML",90,List.of(WeekDays.THURSDAY));
         courseService.save(course);
         System.out.println(Database.courseList);
+
+        System.out.println(schoolService.findById(90));
 
         Course course1 = new Course(40,"HTML",80,List.of(WeekDays.THURSDAY,WeekDays.WEDNESDAY));
         courseService.update(course1);
