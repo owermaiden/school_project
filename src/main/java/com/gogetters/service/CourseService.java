@@ -15,6 +15,7 @@ public class CourseService implements CRUDService<Course>{
     @Override
     public Course findById(int id) throws Exception {
 
+        /*
         for (Course course : Database.courseList) {
 
             if (course.getId() == id){
@@ -23,6 +24,11 @@ public class CourseService implements CRUDService<Course>{
         }
 
         throw new Exception("Course could not find!");
+
+         */
+        return Database.courseList.stream().filter(course -> course.getId() == id)
+                .findFirst().orElseThrow( ()-> new Exception("Course could not find!"));
+
     }
 
     @Override
@@ -67,6 +73,7 @@ public class CourseService implements CRUDService<Course>{
     @Override
     public void deleteById(Long id) throws Exception {
 
+        /*
         for (Course course : Database.courseList) {
 
             if (course.getId() == id){
@@ -77,7 +84,12 @@ public class CourseService implements CRUDService<Course>{
         }
 
         throw new Exception("Course could not found because the given id does not match!");
+         */
+        boolean r1 = Database.courseList.removeIf(p -> p.getId() == id);
 
+        if (!r1){
+            throw new Exception("Course could not found because the given id does not match!");
+        }
 
     }
 
