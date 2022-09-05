@@ -12,6 +12,6 @@ public interface CRUDService<T>{
 
     void update(T t);
 
-    void deleteById(Long id);
+    long deleteById(Long id);
 
 }

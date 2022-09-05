@@ -10,7 +10,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Student  extends BaseEntity{
+public class Student  extends BaseEntity {
 
     private Long studentNumber;
     private String firstName;

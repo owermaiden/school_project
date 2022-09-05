@@ -1,5 +1,6 @@
 package com.gogetters.database;
 
+import com.gogetters.SchoolMainRunner;
 import com.gogetters.entity.Course;
 import com.gogetters.entity.Parent;
 import com.gogetters.entity.School;
@@ -9,7 +10,7 @@ import com.gogetters.enums.WeekDays;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Database {
+public class Database extends SchoolMainRunner {
 
     public static List<Course> courseList = new ArrayList<>(List.of(
             new Course(1,"English", 40, List.of(WeekDays.MONDAY, WeekDays.THURSDAY)),
@@ -31,6 +32,8 @@ public class Database {
             new School(1,"ABC_School", studentList,courseList),
             new School(2,"Java_School", studentList,courseList)
     ));
+
+
 
 
 
