@@ -16,6 +16,7 @@ public class SchoolService implements CRUDService<School> {
                .orElseThrow(()->new RuntimeException("The ID does not exist"));
     }
 
+
     @Override
     public List<School> findAll() {
         return Database.schoolList;
@@ -24,7 +25,8 @@ public class SchoolService implements CRUDService<School> {
 
     @Override
     public void save(School school) {
-        System.out.println(Database.schoolList.add(school));
+
+        Database.schoolList.add(school);
 
     }
 
@@ -34,12 +36,12 @@ public class SchoolService implements CRUDService<School> {
                 .filter(school -> school.getId()== o.getId())
                 .forEach(school -> Database.schoolList.set(Database.schoolList.indexOf(school),o));
 
-
     }
 
     @Override
     public void deleteById(Long id) {
-        Database.schoolList.removeIf(x->x.getId() == id);
+    
+        Database.schoolList.removeIf(p->p.getId()==id);
 
     }
 }
