@@ -15,17 +15,6 @@ public class CourseService implements CRUDService<Course>{
     @Override
     public Course findById(int id) throws Exception {
 
-        /*
-        for (Course course : Database.courseList) {
-
-            if (course.getId() == id){
-                return course;
-            }
-        }
-
-        throw new Exception("Course could not find!");
-
-         */
         return Database.courseList.stream().filter(course -> course.getId() == id)
                 .findFirst().orElseThrow( ()-> new Exception("Course could not find!"));
 
@@ -33,65 +22,24 @@ public class CourseService implements CRUDService<Course>{
 
     @Override
     public List<Course> findAll() {
-
         return Database.courseList;
     }
 
     @Override
-    public void save(Course course) {
 
-        Database.courseList.add(course);
-
+    public void deleteById(Long id) {
+        Database.courseList.removeIf(p->p.id == id);
     }
 
     @Override
-    public void update(Course course) throws Exception {
-
-        /*
-
-            for (Course eachCourse : Database.courseList) {
-
-                if (eachCourse.getId() == course.getId()){
-                    Database.courseList.set(course.getId()-1, course);
-                    return;
-                }
-
-            }
-
-        throw new Exception("Course could not updated because the given id does not match!" + " Course id : " + course.id);
-
-
-         */
-
+    public void update(Course course) {
         Database.courseList.stream()
-                .filter(course1 -> course1.getId()==course.id)
-                .forEach(course1 -> Database.courseList.set(Database.courseList.indexOf(course1),course));
-
-
+                .filter(i -> i.getId() == course.getId())
+                .forEach(i -> Database.courseList.set(Database.courseList.indexOf(i),course));
     }
 
     @Override
-    public void deleteById(Long id) throws Exception {
-
-        /*
-        for (Course course : Database.courseList) {
-
-            if (course.getId() == id){
-                Database.courseList.removeIf(c -> c.getId()== id);
-                return;
-            }
-
-        }
-
-        throw new Exception("Course could not found because the given id does not match!");
-         */
-        boolean r1 = Database.courseList.removeIf(p -> p.getId() == id);
-
-        if (!r1){
-            throw new Exception("Course could not found because the given id does not match!");
-        }
-
+    public void save(Course course) {
+        Database.courseList.add(course);
     }
-
-
 }
