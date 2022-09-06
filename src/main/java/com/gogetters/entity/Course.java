@@ -1,10 +1,7 @@
 package com.gogetters.entity;
 
 import com.gogetters.enums.WeekDays;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.List;
 
