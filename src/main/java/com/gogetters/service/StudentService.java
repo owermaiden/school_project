@@ -35,10 +35,8 @@ public class StudentService implements CRUDService<Student>{
     }
 
     @Override
-    public long deleteById(Long id) {
-        Database.studentList.stream()
-                .filter(student -> student.getId()==id)
-                .findFirst().orElseThrow();
-        return 0;
+    public void deleteById(Long id) {
+        Database.studentList.removeIf(x->x.getId() == id)
+       
     }
 }
