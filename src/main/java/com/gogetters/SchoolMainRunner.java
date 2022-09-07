@@ -15,6 +15,7 @@ import java.util.Scanner;
 
 public class SchoolMainRunner {
 
+
     public static CRUDService<School> schoolService;
     public static CRUDService<Course> courseService;
     public static CRUDService<Parent> parentService;
@@ -35,6 +36,7 @@ public class SchoolMainRunner {
         System.out.println(schoolService.findById(1));
         System.out.println(schoolService.findAll());
 
+    }
         System.out.println(schoolService.findById(90));
 
         Course course1 = new Course(40,"HTML",80,List.of(WeekDays.THURSDAY,WeekDays.WEDNESDAY));
